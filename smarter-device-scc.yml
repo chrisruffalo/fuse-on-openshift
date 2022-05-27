@@ -1,0 +1,31 @@
+# this is an updated scc to allow volumes to attach faster to tekton pipeline build pods
+kind: SecurityContextConstraints
+apiVersion: security.openshift.io/v1
+metadata:
+  name: smarter-device-scc
+allowHostDirVolumePlugin: true
+allowHostIPC: false
+allowHostNetwork: true
+allowHostPID: false
+allowHostPorts: true
+allowPrivilegeEscalation: true
+allowPrivilegedContainer: true
+readOnlyRootFilesystem: false
+priority: 1000
+allowedCapabilities:
+  - SYS_ADMIN
+fsGroup:
+  type: RunAsAny
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: RunAsAny
+supplementalGroups:
+  type: RunAsAny
+volumes:
+  - configMap
+  - downwardAPI
+  - emptyDir
+  - persistentVolumeClaim
+  - projected
+  - secret

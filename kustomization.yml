@@ -1,0 +1,9 @@
+resources:
+  - smarter-device-manager.yml
+  - smarter-device-sa.yml
+
+configMapGenerator:
+  - name: smarter-device-manager-config
+    behavior: create
+    files:
+      - conf.yaml=conf.yml
